@@ -33,7 +33,10 @@ export function LandingPage() {
                     pokemonList.map((pokemon) => {
                       return (
                         <li key={pokemon.name}>
-                          <PokemonCard name={pokemon.name} imageUrl={pokemon.imageUrl} />
+                          <PokemonCard
+                            name={pokemon.name}
+                            detailsUrl={pokemon.url}
+                          />
                         </li>
                       )
                     })
