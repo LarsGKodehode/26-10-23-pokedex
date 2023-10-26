@@ -2,13 +2,14 @@ import { useEffect, useState } from "react"
 
 export function useFetch(url) {
   const [data, setData] = useState(null)
-  const error = false
+  const [error, setError] = useState(null)
   
   useEffect(
     () => {
       fetch(url)
         .then(respons => respons.json())
         .then(responseData => setData(responseData))
+        .catch(reason => setError(reason))
     },
     [url]
   )
@@ -16,7 +17,7 @@ export function useFetch(url) {
 
   return {
     data,
-    isLoading: data ? false : true,
+    isLoading: data || error ? false : true,
     error
   }
 }
