@@ -2,18 +2,18 @@ import { PokemonCard } from '../components/PokemonCard/PokemonCard'
 import { Loading } from '../components/Loading/Loading'
 import { ErrorDisplay } from '../components/ErrorDisplay/ErrorDisplay'
 import style from './LandingPage.module.css'
+import { useFetch } from '../hooks/useFetch'
+
 
 export function LandingPage() {
+  const pokemonApi = "https://pokeapi.co/api/v2/pokemon"
 
-  const isLoading = false
-  const error = false
+  const { data, isLoading, error } = useFetch(pokemonApi)
 
-  const pokemonData = [
-    { name: "Charmander", imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" },
-    { name: "Charmander", imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" },
-    { name: "Charmander", imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" },
-    { name: "Charmander", imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" },
-  ]
+  let pokemonList
+  if (data !== null) {
+    pokemonList = data.results
+  }
 
   return (
     <div className={style.App}>
@@ -30,7 +30,7 @@ export function LandingPage() {
               : (
                 <ul className={style.pokemonList}>
                   {
-                    pokemonData.map((pokemon) => {
+                    pokemonList.map((pokemon) => {
                       return (
                         <li key={pokemon.name}>
                           <PokemonCard name={pokemon.name} imageUrl={pokemon.imageUrl} />
