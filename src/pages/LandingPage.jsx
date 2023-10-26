@@ -11,7 +11,7 @@ export function LandingPage() {
       <main className={style.main}>
         <h2>List of Pokemons</h2>
 
-        <ul>
+        <ul className={style.pokemonList}>
           <li><PokemonCard name="Charmander" imageUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" /></li>
           <li><PokemonCard name="Charmander" imageUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" /></li>
           <li><PokemonCard name="Charmander" imageUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" /></li>
